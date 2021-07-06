@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:todo_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+  liquibase:
+    change-log: db/changelog/changelog-master.xml
+  h2:
+    console:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      enabled-by-default: false
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: when-authorized
+      roles: ADMIN
+  info:
+    git:
+      mode: simple

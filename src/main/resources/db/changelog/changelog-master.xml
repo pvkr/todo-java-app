@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="ddl_1" author="pvkr">
+        <createTable tableName="todo">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="summary" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(20)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="details" type="text"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load_1" author="pvkr">
+        <sql dbms="h2">
+            insert into todo (summary, status, created_at, details) values ('TODO ITEM 1', 'CLOSED', CURRENT_TIMESTAMP,
+            null);
+            insert into todo (summary, status, created_at, details) values ('TODO ITEM 2', 'OPEN', CURRENT_TIMESTAMP,
+            null);
+            insert into todo (summary, status, created_at, details) values ('TODO ITEM 3', 'OPEN', CURRENT_TIMESTAMP,
+            'SOME DESCRIPTION');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
