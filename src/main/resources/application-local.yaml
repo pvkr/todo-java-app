@@ -1,0 +1,11 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    # log request mappings at start up and invocation
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
+    # log web endpoints mappings at start up and invocation
+    org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping: trace
